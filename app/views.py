@@ -28,7 +28,7 @@ def index():
     """Render website's home page."""
     return app.send_static_file('index.html')
     
-#Sign up page, cURL with JSON Data or POSTMAN with POST of firstname,lastname,username,password,email
+#Sign up Route
 @app.route('/api/user/register', methods=['POST'])
 def signup():
     json_data = json.loads(request.data)
@@ -41,7 +41,7 @@ def signup():
         json_data_response = jsonify({"error":"1","data":{},'message':'not signed up'})
     return json_data_response
 
-#Log in page for a registered user, cURL or POSTMAN with POST request with JSON Data of email,password
+#Function to login users
 @app.route('/api/user/login', methods=["POST"])
 def login():
     json_data = json.loads(request.data)
@@ -55,7 +55,7 @@ def login():
         json_data_response = jsonify({"error":"1","data":{},"message":'not logged'})
     return json_data_response
 
-#Log out a user, cURL or POSTMAN with POST request of JSON Data of token
+
 @app.route('/api/user/logout',methods=["POST"])
 def logout():
     json_data = json.loads(request.data)
@@ -68,7 +68,7 @@ def logout():
         json_data_response = jsonify({'status':'did not log out'})
     return json_data_response
     
-#View a registered user page, cURL or POSTMAN with GET request
+
 @app.route('/api/user/<userid>',methods=["GET"])
 def user(userid):
     user = db.session.query(User).filter_by(id=userid).first()
@@ -78,7 +78,7 @@ def user(userid):
         json_data_response = jsonify({"error":"1","data":{},'message':'did not retrieve user'})
     return json_data_response
     
-#View all users page, cURL or POSTMAN with GET request
+
 @app.route('/api/users',methods=["GET"])
 def users():
     users = db.session.query(User).all()
@@ -91,7 +91,7 @@ def users():
         json_data_response = jsonify({"error":"1","data":{},"message":"did not retrieve all users"})
     return json_data_response
 
-#New Wish, cURL or POSTMAN with GET request or POST request of JSON Data of userid,url,thumbnail,title,description
+
 @app.route('/api/user/<userid>/wishlist',methods=["GET","POST"])
 def wishes(userid):
     if request.method=="GET":
@@ -117,7 +117,7 @@ def wishes(userid):
             json_data_response = jsonify({"error":"1", "data":{},'message':'did not create wish'})
         return json_data_response
 
-#Used in image search on new wishes, cURL or POSTMAN with GET request with ?url= with the url desired
+
 @app.route('/api/thumbnail/process', methods=['GET'])
 def get_images():
     url = request.args.get('url')
@@ -161,10 +161,13 @@ def send(userid):
     msg['From'] = fromaddr
     msg['To'] = ", ".join(emaillist)
     msg['Subject'] = subject
-    header="Hey!"  + sender  + "Has Sent Their WishList , Make their dreams come through Today"
-    msg.attach(MIMEText(header,'plain'))
+    intro="Hey!"  + sender  + "Has Sent Their WishList , Make their dreams come through Today"
+    link = "This link leads to the application. link: https://desolate-headland-66198.herokuapp.com//#/users"
+
+    msg.attach(MIMEText(intro,'plain'))
     msg.attach(MIMEText(message,'plain'))
     msg.attach(MIMEText('Their Wishlist: '+ allWishes,'plain'))
+    msg.attach(MIMEText(link,'plain'))
     msg.attach(MIMEText('plain'))
     messageToSend = msg.as_string()
     username = 'wjc.wishlist@gmail.com'
