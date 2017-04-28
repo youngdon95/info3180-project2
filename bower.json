@@ -1,0 +1,30 @@
+{
+  "name": "project2",
+  "homepage": "project2",
+  "authors": [
+    "Justen Morgan - 620070138"
+  ],
+  "description": "project2",
+  "license": "MIT",
+  "engine": {
+     "node": ">=0.10.0"
+  },
+  "ignore": [
+    "**/.*",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bower":"1.6.5",
+    "angular": "^1.5.2",
+    "bootstrap": "^3.3.6",
+    "jquery":"~2.0.3",
+    "angular-bootstrap":"1.2.5",
+    "angular-route":"1.5.2",
+    "angular-cookies":"1.4"
+  },
+  "scripts": {
+    "start":"node index.js",
+    "postinstall": "bower install"
+  }
+}

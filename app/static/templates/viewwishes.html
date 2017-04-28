@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <h3 class="modal-title">This is {{user}}'s WishList</h3>
+</div>
+<div class="modal-body spacing">
+        <div class="col-lg-12">
+        <div class="panel panel-default" ng-repeat="wish in wishes track by $index">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                <div class="col-lg-3 pull-left">
+                    <img src="{{wish.thumbnail}}" class="pull-left" style="max-height:170px;max-width:170px;">
+                </div>
+                <div class="col-lg-6 pull-right">
+                    <span><h4>{{wish.title}}</h4></span>
+                    <br>
+                    <span><h5>{{wish.description}}</h5></span>
+                    <br>
+                    <span><p>{{wish.addon}}</p></span>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<br>
+<div class="modal-footer">
+    <button class="btn btn-success" type="button" ng-click="ok()">OK</button>
+    
+</div>

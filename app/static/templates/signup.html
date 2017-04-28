@@ -1,0 +1,53 @@
+<div class="container v-center1" ng-controller="SignUpController">
+  <h1 class="text-center">Sign Up Page</h1>
+  <hr>
+  <div ng-form="signUpForm" ng-class="{'has-error':
+    (signUpForm.firstname.$invalid && signUpForm.firstname.$dirty) || 
+    (signUpForm.lastname.$invalid && signUpForm.lastname.$dirty) ||
+    (signUpForm.username.$invalid && signUpForm.username.$dirty) ||
+    (signUpForm.email.$invalid && signUpForm.email.$dirty) ||
+    (signUpForm.password.$invalid && signUpForm.password.$dirty)}"
+    class="text-center row">
+    <div class="col-lg-8">
+    <div class="form-group">
+      <label>First Name</label>
+      <input type="text" class="form-control" name="firstname" ng-model="firstname" placeholder="Please enter your first name" required>
+    </div>
+    <uib-alert type="danger" ng-if="signUpForm.firstname.$dirty && signUpForm.firstname.$invalid">Enter your first name here</uib-alert>
+        <div class="form-group">
+      <label>Last Name</label>
+      <input type="text" class="form-control" name="lastname" ng-model="lastname" placeholder="Please enter your last name" required>
+    </div>
+    <uib-alert type="danger" ng-if="signUpForm.lastname.$dirty && signUpForm.lastname.$invalid">Enter your last name here</uib-alert>
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" class="form-control" name="username" ng-model="username" placeholder="Please enter a username" required>
+    </div>
+    <uib-alert type="danger" ng-if="signUpForm.username.$dirty && signUpForm.username.$invalid">Enter a username here :]</uib-alert>
+    
+       <div class="form-group">
+      <label>Email</label>
+      <input type="email" class="form-control" name="email" ng-model="email" placeholder="Please enter your email address" required>
+    </div>
+     <uib-alert type="danger" ng-if="signUpForm.email.$dirty && signUpForm.email.$invalid">Please enter your email address right here</uib-alert>
+        <div class="form-group">
+      <label>Password</label>
+      <input type="password" class="form-control" name="password" ng-model="password" placeholder="Please enter a STRONG password" required>
+    </div>
+    <uib-alert type="danger" ng-if="signUpForm.password.$dirty && signUpForm.password.$invalid">Please enter a password</uib-alert>
+    
+    <br>
+    <div class="col-lg-12 text-center">
+      <div class="col-lg-6 pull-left">
+        <a href="#/" class="btn btn-lg btn-default">Back</a>
+      </div>
+      <div class="col-lg-6 pull-right">
+      <button type="submit" class="btn btn-success btn-lg" ng-click="signUp()">Sign Up</button>
+    </div>
+    </div>
+   
+  </div>
+  </div>
+  <br>
+  <br>
+</div>

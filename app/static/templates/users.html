@@ -1,0 +1,22 @@
+<wishlistheader></wishlistheader>
+<div class="container" ng-controller="UsersController">
+    <div class="col-lg-12">
+    <h1 class="pull-left">All Wishlist Application Users</h1>
+    </div>
+    <div class="col-lg-12">
+        <hr>
+        <div class="panel panel-default" ng-repeat="user in users track by $index">
+            <div class="panel-heading">
+                <h4>{{user.firstname}} {{user.lastname}}</h4>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-6">
+                    <span class="pull-left"><h5>{{user.email}}</h5></span>
+                </div>
+                <div class="col-md-6">
+                    <span class="pull-right btn btn-info" ng-click="seeWishlist(user.id)"><i class="fa fa-male" aria-hidden="true"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
