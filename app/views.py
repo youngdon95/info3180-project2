@@ -161,14 +161,13 @@ def send(userid):
     msg['From'] = fromaddr
     msg['To'] = ", ".join(emaillist)
     msg['Subject'] = subject
-    intro="Hey!"  + sender  + "Has Sent Their WishList , Make their dreams come through Today"
-    link = "This link leads to the application. link: https://desolate-headland-66198.herokuapp.com//#/users"
+    intro="Hey!"  + sender  + "Has Sent Their WishList , Make their dreams come through Today" + "\n"
+    link = "This link leads to the application. link: https://desolate-headland-66198.herokuapp.com//#/users" + "\n"
 
     msg.attach(MIMEText(intro,'plain'))
     msg.attach(MIMEText(message,'plain'))
     msg.attach(MIMEText('Their Wishlist: '+ allWishes,'plain'))
     msg.attach(MIMEText(link,'plain'))
-    msg.attach(MIMEText('plain'))
     messageToSend = msg.as_string()
     username = 'wjc.wishlist@gmail.com'
     password = 'ncsw zedf illm zcmt'
